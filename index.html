@@ -116,7 +116,25 @@
   </main>
 
   <!-- hidden audio (user can play) -->
-  <audio id="bgMusic" src="" preload="none"></audio>
+  <!-- Add this inside the <body> where your audio is managed -->
+<audio id="bgMusic" loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-sweet-september-131.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playMusic');
+    if (playBtn && music) {
+      playBtn.addEventListener('click', () => {
+        if (music.paused) music.play();
+        else music.pause();
+      });
+    }
+  });
+</script>
+
 
   <div class="fireworks" id="fireworks"></div>
 
